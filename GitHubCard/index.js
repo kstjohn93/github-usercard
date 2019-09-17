@@ -2,6 +2,32 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+axios.get("https://api.github.com/users/kstjohn93")
+.then(response => {
+  console.log(response);
+  cCard.appendChild(superComp(response.data));
+})
+.catch(err => {
+  console.log(err);
+})
+
+const followersArray = [];
+
+axios.get("https://api.github.com/users/kstjohn93/followers")
+.then(response =>{
+  console.log(respone);
+  response.data.forEach( element =>{
+    followersArray.push(element);
+  })
+  followersArray.forEach(element =>{
+    cCard.appendChild(superComp(element));
+  })
+})
+.catch(err => {
+  console.log(err);
+})
+
+console.log(followersArray)
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
